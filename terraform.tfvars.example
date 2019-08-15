@@ -1,0 +1,9 @@
+hcloud_token = "<insert your hcloud api token here>"
+location = "hel1"
+image = "ubuntu-18.04"
+master_count = 1
+master_type = "cx31"
+worker_count = 3
+worker_type = "cx31"
+ssh_keys = ["<insert your ssh key name here>"]
+cluster_name = "pharos-rulezz"

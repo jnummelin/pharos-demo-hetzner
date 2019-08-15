@@ -1,0 +1,41 @@
+name: hetzner-demo
+network:
+  provider: weave
+  firewalld:
+    enabled: false
+  node_local_dns_cache: true
+# If you wish to enable Hetzner cloud provider integration, uncoment the below cloud config
+# You also need to add your base64 encoded API token into the config file
+# By enabling hcloud provider, you'll get access to persistent volumes via CSI so you probably do not ant to use kontena-storage at the same time.
+
+# cloud:
+#   provider: hcloud
+#   config: ./hetzner-config.yaml
+addons:
+  cert-manager:
+    enabled: true
+    webhook:
+      enabled: false
+    issuer:
+      name: letsencrypt
+      server: https://acme-v02.api.letsencrypt.org/directory
+      email: jussi@kontena.io
+  ingress-nginx:
+    enabled: true
+  helm:
+    enabled: true
+  kontena-storage:
+    enabled: true
+    data_dir: /var/lib/kontena-storage
+    storage:
+      use_all_nodes: true
+  host-upgrades:
+    enabled: true
+    schedule: "30 6 * * *"
+    schedule_window: 1h
+    reboot: false
+  kontena-lens:
+    enabled: true
+    name: hetzner-demo
+    persistence:
+      enabled: true

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hcloud
+  namespace: kube-system
+data:
+  # Base64 encoded Hetzner API token
+  token: some_value
